@@ -1,0 +1,39 @@
+.bg-music-frame {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  left: -9999px;
+  top: -9999px;
+}
+
+.bg-music-toggle {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1000;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(120, 30, 30, 0.9);
+  color: #fff7e6;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.bg-music-toggle:hover {
+  background: rgba(150, 40, 40, 0.95);
+  transform: scale(1.06);
+}
+
+.bg-music-toggle:active {
+  transform: scale(0.96);
+}

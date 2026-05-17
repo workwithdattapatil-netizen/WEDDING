@@ -1,0 +1,47 @@
+.falling-flowers {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.petal {
+  position: absolute;
+  top: -40px;
+  color: var(--gold);
+  filter: drop-shadow(0 2px 4px rgba(107, 39, 55, 0.15));
+  animation-name: petalFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.petal-svg {
+  display: inline-block;
+  line-height: 0;
+  filter: drop-shadow(0 2px 3px rgba(107, 39, 55, 0.25));
+}
+
+.petal:nth-child(3n) {
+  color: var(--maroon);
+}
+
+.petal:nth-child(5n) {
+  color: var(--gold-light);
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translate3d(0, -40px, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(var(--drift, 0), 110vh, 0) rotate(var(--spin, 540deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .falling-flowers {
+    display: none;
+  }
+}

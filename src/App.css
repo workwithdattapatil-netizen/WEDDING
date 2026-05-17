@@ -1,0 +1,6 @@
+.invitation {
+  width: 100%;
+  background: var(--ivory);
+  position: relative;
+  overflow-x: hidden;
+}

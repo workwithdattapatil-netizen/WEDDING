@@ -1,0 +1,227 @@
+.save-date {
+  background:
+    linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%);
+  padding: 50px 24px;
+  border-top: 1px solid rgba(184, 134, 11, 0.2);
+  border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+}
+
+.scratch-wrap {
+  position: relative;
+  width: min(360px, 90%);
+  margin: 24px auto 32px;
+}
+
+.scratch-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 7 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 10px 30px rgba(107, 39, 55, 0.2),
+    inset 0 0 0 2px var(--gold-soft);
+  background: linear-gradient(135deg, #fff8e7, #fdf6e8);
+}
+
+.flower-burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 5;
+}
+
+.burst-petal {
+  position: absolute;
+  color: var(--gold);
+  filter: drop-shadow(0 2px 4px rgba(107, 39, 55, 0.25));
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-name: flowerBurst;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.burst-petal:nth-child(3n) {
+  color: var(--maroon);
+}
+
+.burst-petal:nth-child(4n) {
+  color: var(--gold-light);
+}
+
+.burst-petal:nth-child(7n) {
+  color: #c0392b;
+}
+
+.burst-left {
+  left: -8px;
+}
+
+.burst-right {
+  right: -8px;
+}
+
+@keyframes flowerBurst {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.4);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--tx), var(--ty), 0) rotate(var(--rot)) scale(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flower-burst {
+    display: none;
+  }
+}
+
+.scratch-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+}
+
+.date-day {
+  font-family: var(--script);
+  color: var(--gold);
+  font-size: 26px;
+  line-height: 1;
+}
+
+.date-main {
+  font-family: var(--display);
+  color: var(--maroon);
+  font-size: 28px;
+  margin: 6px 0;
+  letter-spacing: 1px;
+}
+
+.date-sub {
+  font-family: var(--serif);
+  color: var(--text-soft);
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.scratch-canvas:active {
+  cursor: grabbing;
+}
+
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 28px;
+  gap: 14px;
+}
+
+.countdown-eyebrow {
+  font-family: var(--serif);
+  font-size: clamp(11px, 1.1vw, 13px);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+
+.days-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(18px, 3vw, 28px) clamp(28px, 5vw, 48px);
+  background: linear-gradient(180deg, var(--maroon), var(--maroon-deep));
+  color: var(--ivory);
+  border-radius: 16px;
+  border: 1px solid var(--gold);
+  box-shadow:
+    0 10px 28px rgba(107, 39, 55, 0.3),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.25);
+  min-width: clamp(180px, 36vw, 260px);
+}
+
+.days-number {
+  font-family: var(--display);
+  font-size: clamp(64px, 12vw, 104px);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold-light), var(--gold-soft));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+.days-label {
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.6vw, 16px);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-top: 10px;
+}
+
+.hms-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(8px, 1.5vw, 14px);
+  font-variant-numeric: tabular-nums;
+}
+
+.hms-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 44px;
+}
+
+.hms-number {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.4vw, 24px);
+  font-weight: 600;
+  color: var(--maroon);
+  line-height: 1;
+}
+
+.hms-label {
+  font-family: var(--serif);
+  font-size: clamp(9px, 1vw, 11px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+
+.hms-sep {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.4vw, 24px);
+  color: var(--gold);
+  font-weight: 600;
+  line-height: 1;
+}
