@@ -37,7 +37,7 @@ const ceremonies: Ceremony[] = [
   },
   {
     name: 'Marriage',
-    date: '25th February 2027',
+    date: '15th February 2027',
     day: 'Monday',
     time: '11:53 AM onwards',
     venue: 'Wedding Hall',
