@@ -6,25 +6,21 @@ const SUBMIT_URL =
   'https://script.google.com/macros/s/AKfycbyQx8vUq0x5XSWD5jXnDO1EFFJReEVmk1q_hxxNeJZHMAB4oF3u_8SGL6aeejfMzFsr/exec'
 
 type Attending = 'yes' | 'maybe' | 'no'
-type Mood = 'food' | 'dancing' | 'love' | 'all'
+// type Mood = 'food' | 'dancing' | 'love' | 'all'
 
 type Errors = Partial<Record<'name' | 'phone' | 'guests', string>>
 
-const MOODS: { value: Mood; label: string; icon: string }[] = [
-  { value: 'food', label: 'Food', icon: '🍽️' },
-  { value: 'dancing', label: 'Dancing', icon: '💃' },
-  { value: 'love', label: 'Love', icon: '💖' },
-  { value: 'all', label: 'All of it', icon: '✨' },
-]
+// const MOODS: { value: Mood; label: string; icon: string }[] = [
+//   { value: 'food', label: 'Food', icon: '🍽️' },
+//   { value: 'dancing', label: 'Dancing', icon: '💃' },
+//   { value: 'love', label: 'Love', icon: '💖' },
+//   { value: 'all', label: 'All of it', icon: '✨' },
+// ]
 
-const validate = (name: string, phone: string, guests: number): Errors => {
+const validate = (name: string,  guests: number): Errors => {
   const errs: Errors = {}
   if (!name.trim()) errs.name = 'Name is required'
   else if (name.trim().length < 2) errs.name = 'Please tell us your full name'
-
-  const phoneDigits = phone.replace(/\D/g, '')
-  if (!phone.trim()) errs.phone = 'Phone is required'
-  else if (phoneDigits.length !== 10) errs.phone = 'Phone must be exactly 10 digits'
 
   if (Number.isNaN(guests) || guests < 0 || guests > 10) errs.guests = '0–10 guests'
   return errs
@@ -32,10 +28,8 @@ const validate = (name: string, phone: string, guests: number): Errors => {
 
 const RSVPForm = () => {
   const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
   const [attending, setAttending] = useState<Attending>('yes')
   const [guests, setGuests] = useState(1)
-  const [mood, setMood] = useState<Mood>('all')
   const [errors, setErrors] = useState<Errors>({})
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -45,7 +39,7 @@ const RSVPForm = () => {
     e.preventDefault()
     console.log('[RSVP] submit triggered')
 
-    const errs = validate(name, phone, guests)
+    const errs = validate(name, guests)
     setErrors(errs)
     if (Object.keys(errs).length > 0) {
       console.warn('[RSVP] validation failed', errs)
@@ -54,10 +48,8 @@ const RSVPForm = () => {
 
     const payload = {
       name: name.trim(),
-      phone: phone.trim(),
       attending,
       guests,
-      mood,
       submittedAt: new Date().toISOString(),
     }
     console.log('[RSVP] payload', payload)
@@ -133,22 +125,6 @@ const RSVPForm = () => {
           {errors.name && <span className="rsvp-error">{errors.name}</span>}
         </div>
 
-        {/* <div className="rsvp-field">
-          <label htmlFor="rsvp-phone">Phone</label>
-          <input
-            id="rsvp-phone"
-            type="tel"
-            inputMode="numeric"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
-            placeholder="97654XXXXX"
-            autoComplete="tel-national"
-            maxLength={10}
-            required
-            aria-invalid={!!errors.phone}
-          />
-          {errors.phone && <span className="rsvp-error">{errors.phone}</span>}
-        </div> */}
 
         <div className="rsvp-row">
           <div className="rsvp-field">
@@ -178,24 +154,6 @@ const RSVPForm = () => {
             {errors.guests && <span className="rsvp-error">{errors.guests}</span>}
           </div>
         </div>
-
-        {/* <div className="rsvp-field">
-          <label>What are you here for?</label>
-          <div className="mood-grid">
-            {MOODS.map((m) => (
-              <button
-                key={m.value}
-                type="button"
-                className={`mood-chip ${mood === m.value ? 'active' : ''}`}
-                onClick={() => setMood(m.value)}
-                aria-pressed={mood === m.value}
-              >
-                <span className="mood-icon">{m.icon}</span>
-                <span className="mood-label">{m.label}</span>
-              </button>
-            ))}
-          </div>
-        </div> */}
 
         {submitError && <p className="rsvp-submit-error">{submitError}</p>}
 
