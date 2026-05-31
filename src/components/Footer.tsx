@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footer-ornament">❦</div>
 
       <h3 className="footer-couple">Dattatray &amp; Pooja</h3>
-      <p className="footer-date">25 · 02 · 2027</p>
+      <p className="footer-date">15 · 02 · 2027</p>
 
       <div className="footer-divider">
         <span className="footer-divider-icon">✦</span>
