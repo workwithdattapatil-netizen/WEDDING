@@ -39,7 +39,7 @@ const ceremonies: Ceremony[] = [
     name: 'Marriage',
     date: '15th February 2027',
     day: 'Monday',
-    time: '11:53 AM onwards',
+    time: '11:23 AM onwards',
     venue: 'Wedding Hall',
     mapUrl: 'https://maps.app.goo.gl/Z331PfyYtMkzTo486?g_st=ac',
     icon: '💍',

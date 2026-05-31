@@ -133,7 +133,7 @@ const RSVPForm = () => {
           {errors.name && <span className="rsvp-error">{errors.name}</span>}
         </div>
 
-        <div className="rsvp-field">
+        {/* <div className="rsvp-field">
           <label htmlFor="rsvp-phone">Phone</label>
           <input
             id="rsvp-phone"
@@ -148,7 +148,7 @@ const RSVPForm = () => {
             aria-invalid={!!errors.phone}
           />
           {errors.phone && <span className="rsvp-error">{errors.phone}</span>}
-        </div>
+        </div> */}
 
         <div className="rsvp-row">
           <div className="rsvp-field">
@@ -169,7 +169,7 @@ const RSVPForm = () => {
             <input
               id="rsvp-guests"
               type="number"
-              min={0}
+              min={1}
               max={10}
               value={guests}
               onChange={(e) => setGuests(Number(e.target.value))}
@@ -179,7 +179,7 @@ const RSVPForm = () => {
           </div>
         </div>
 
-        <div className="rsvp-field">
+        {/* <div className="rsvp-field">
           <label>What are you here for?</label>
           <div className="mood-grid">
             {MOODS.map((m) => (
@@ -195,7 +195,7 @@ const RSVPForm = () => {
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {submitError && <p className="rsvp-submit-error">{submitError}</p>}
 

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './SaveTheDate.css'
 
-const WEDDING_DATE = new Date('2027-02-15T11:53:00+05:30')
+const WEDDING_DATE = new Date('2027-02-15T11:23:00+05:30')
 
 const BURST_GLYPHS = ['❀', '✿', '❁', '✾', '🌸', '🌼', '🌺']
 
