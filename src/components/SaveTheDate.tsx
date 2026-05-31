@@ -167,7 +167,7 @@ const SaveTheDate = () => {
       <div className="scratch-wrap">
         <div className="scratch-card">
           <div className="scratch-reveal">
-            <p className="date-day">Thursday</p>
+            <p className="date-day">Monday</p>
             <h3 className="date-main">15th February 2027</h3>
             <p className="date-sub">Ponda, Goa</p>
           </div>
