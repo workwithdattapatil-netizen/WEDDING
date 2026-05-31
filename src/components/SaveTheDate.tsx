@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './SaveTheDate.css'
 
-const WEDDING_DATE = new Date('2027-02-25T10:00:00+05:30')
+const WEDDING_DATE = new Date('2027-02-15T11:53:00+05:30')
 
 const BURST_GLYPHS = ['❀', '✿', '❁', '✾', '🌸', '🌼', '🌺']
 
@@ -168,7 +168,7 @@ const SaveTheDate = () => {
         <div className="scratch-card">
           <div className="scratch-reveal">
             <p className="date-day">Thursday</p>
-            <h3 className="date-main">25th February 2027</h3>
+            <h3 className="date-main">15th February 2027</h3>
             <p className="date-sub">Ponda, Goa</p>
           </div>
           {!revealed && (
